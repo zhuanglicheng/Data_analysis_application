@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/static/js/vue.js"></script>
+	<script src="/static/js/vue-router.js"></script>
+	<script src="/static/js/vue-resource.js"></script>
+</head>
+<body>
+{% verbatim %}
+<div id="root">
+<button v-on:click='getData' >调用 GET 方法</button>
+<br />
+{{ ret }}
+</div>
+{% endverbatim %}
+
+<script>
+var vm = new Vue({
+el:"#root",
+data:{
+{# url:'http://127.0.0.1:8000/myapp/method_get/?a=1&b=2', #}
+url1:'/myapp/method_get',
+pas:{params : {'a':1,'b':2}},
+ret:''
+},
+methods:{
+getData:function () {
+//请求数据
+this.$http.get(this.url1,this.pas).then(function(res){
+this.ret = res.body;
+console.log(res);
+},function(res){
+console.log('请求失败处理');
+console.log(res.status);
+});
+}
+}
+})
+</script>
+</body>
+</html>

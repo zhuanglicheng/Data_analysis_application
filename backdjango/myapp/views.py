@@ -11,9 +11,9 @@ def index(request):
 def method_get(request):
     if request.method == 'GET':
         # 获取 get 参数
-        print(request)
-        print(request.GET['a'])
-        print(request.GET['b'])
+        #print(request)
+        #print(request.GET['a'])
+        #print(request.GET['b'])
         # 返回 json 数据
         response = {}
         response['msg'] = 'success'
